@@ -3,7 +3,9 @@ const eventHub = document.querySelector("#state-fair");
 
 export const RideTicketHolders = () => {
   eventHub.addEventListener("rideTicketPurchased", (event) => {
-    contentTarget.innerHTML += `<div class="person rider"></div>`;
-    return contentTarget;
+    if (event.detail.rideTicketSelected === "rideTicket") {
+      contentTarget.innerHTML += `<div class="person rider"></div>`;
+      return contentTarget;
+    }
   });
 };
