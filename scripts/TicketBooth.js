@@ -1,6 +1,7 @@
 const contentTarget = document.querySelector(".entry");
 const eventHub = document.querySelector("#state-fair");
 
+//ride Tickets
 eventHub.addEventListener("click", (event) => {
   if (event.target.id === "rideTicket") {
     const customEvent = new CustomEvent("rideTicketPurchased", {
@@ -13,6 +14,7 @@ eventHub.addEventListener("click", (event) => {
   }
 });
 
+//food Tickets
 eventHub.addEventListener("click", (event) => {
   if (event.target.id === "foodTicket") {
     const customEvent = new CustomEvent("foodTicketPurchased", {
@@ -24,11 +26,24 @@ eventHub.addEventListener("click", (event) => {
   }
 });
 
+//Game Tickets
 eventHub.addEventListener("click", (event) => {
   if (event.target.id === "gameTicket") {
     const customEvent = new CustomEvent("gameTicketPurchased", {
       detail: {
         gameTicketSelected: event.target.id,
+      },
+    });
+    eventHub.dispatchEvent(customEvent);
+  }
+});
+
+//Sideshow Tickets
+eventHub.addEventListener("click", (event) => {
+  if (event.target.id === "sideshowTicket") {
+    const customEvent = new CustomEvent("sideshowTicketPurchased", {
+      detail: {
+        sideshowTicketSelected: event.target.id,
       },
     });
     eventHub.dispatchEvent(customEvent);
@@ -41,6 +56,7 @@ export const TicketBooth = () => {
         <button id="rideTicket">Ride Ticket</button>
         <button id="foodTicket">Food Ticket</button>
         <button id="gameTicket">Game Ticket</button>
+        <button id="sideshowTicket">Sideshow Ticket</button>
         </div>
     `;
 };
