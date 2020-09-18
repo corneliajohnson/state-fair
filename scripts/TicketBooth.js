@@ -9,6 +9,7 @@ eventHub.addEventListener("click", (event) => {
         rideTicketSelected: event.target.id,
       },
     });
+    dispatchStateChangeEvent();
     // Dispatch to event hub
     eventHub.dispatchEvent(customEvent);
   }
@@ -22,6 +23,7 @@ eventHub.addEventListener("click", (event) => {
         foodTicketSelected: event.target.id,
       },
     });
+    dispatchStateChangeEvent();
     eventHub.dispatchEvent(customEvent);
   }
 });
@@ -34,6 +36,7 @@ eventHub.addEventListener("click", (event) => {
         gameTicketSelected: event.target.id,
       },
     });
+    dispatchStateChangeEvent();
     eventHub.dispatchEvent(customEvent);
   }
 });
@@ -46,6 +49,7 @@ eventHub.addEventListener("click", (event) => {
         sideshowTicketSelected: event.target.id,
       },
     });
+    dispatchStateChangeEvent();
     eventHub.dispatchEvent(customEvent);
   }
 });
@@ -58,9 +62,16 @@ eventHub.addEventListener("click", (event) => {
         fullPackageSeleted: event.target.id,
       },
     });
+    dispatchStateChangeEvent();
     eventHub.dispatchEvent(customEvent);
   }
 });
+
+//event for ant ticket purchased
+const dispatchStateChangeEvent = () => {
+  const ticketStateChangedEvent = new CustomEvent("ticketSelected");
+  eventHub.dispatchEvent(ticketStateChangedEvent);
+};
 
 export const TicketBooth = () => {
   contentTarget.innerHTML = `
