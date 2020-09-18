@@ -50,6 +50,18 @@ eventHub.addEventListener("click", (event) => {
   }
 });
 
+//Full Package Ticket Holder
+eventHub.addEventListener("click", (event) => {
+  if (event.target.id === "fullPackage") {
+    const customEvent = new CustomEvent("fullPackagePurchased", {
+      detail: {
+        fullPackageSeleted: event.target.id,
+      },
+    });
+    eventHub.dispatchEvent(customEvent);
+  }
+});
+
 export const TicketBooth = () => {
   contentTarget.innerHTML = `
         <div class="ticketBooth">
@@ -57,6 +69,7 @@ export const TicketBooth = () => {
         <button id="foodTicket">Food Ticket</button>
         <button id="gameTicket">Game Ticket</button>
         <button id="sideshowTicket">Sideshow Ticket</button>
+        <button id="fullPackage">Full Package Ticket</button>
         </div>
     `;
 };
